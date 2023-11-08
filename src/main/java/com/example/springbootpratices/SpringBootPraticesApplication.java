@@ -13,12 +13,17 @@ public class SpringBootPraticesApplication  implements CommandLineRunner {
 	@Autowired
 	private StudentRepository studentRepository;
 
+
+	@Autowired
+	private StudentIdCardRepository studentIdCardRepository;
+
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootPraticesApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-
+		StudentIdCard studentIdCard = studentIdCardRepository.findById(1L).orElseThrow();
+		System.out.println(studentIdCard);
 	}
 }
