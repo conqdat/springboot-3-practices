@@ -10,8 +10,10 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import java.util.List;
 
-@DataJpaTest // This annotation tells Spring Boot to look for an embedded database configuration and to configure JPA for us.
-@AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2) // This annotation tells Spring Boot to use H2 as the embedded database.
+@DataJpaTest
+// This annotation tells Spring Boot to look for an embedded database configuration and to configure JPA for us.
+@AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
+// This annotation tells Spring Boot to use H2 as the embedded database.
 public class PokemonRepositoryTest {
 
     @Autowired
