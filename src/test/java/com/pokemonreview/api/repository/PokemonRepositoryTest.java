@@ -74,4 +74,60 @@ public class PokemonRepositoryTest {
         Assertions.assertEquals(pokemon.getName(), foundPokemon.getName());
         Assertions.assertEquals(pokemon.getType(), foundPokemon.getType());
     }
+
+    @Test
+    public void PokemonRepository_FindByType_ReturnPokemon() {
+        // Arrange
+        Pokemon pokemon = Pokemon.builder()
+                .name("Pikachu")
+                .type("Electric")
+                .build();
+
+        pokemonRepository.save(pokemon);
+
+        // Act
+        Pokemon foundPokemon = pokemonRepository.findByType(pokemon.getType()).orElse(null);
+
+        // Assert
+        Assertions.assertNotNull(foundPokemon);
+        Assertions.assertEquals(pokemon.getName(), foundPokemon.getName());
+        Assertions.assertEquals(pokemon.getType(), foundPokemon.getType());
+    }
+
+    @Test
+    public void PokemonRepository_UpdatePokemon_ReturnPokemon() {
+        // Arrange
+        Pokemon pokemon = Pokemon.builder()
+                .name("Pikachu")
+                .type("Electric")
+                .build();
+
+        pokemonRepository.save(pokemon);
+
+        // Act
+        pokemon.setName("Charmander");
+        pokemon.setType("Fire");
+        Pokemon updatedPokemon = pokemonRepository.save(pokemon);
+
+        // Assert
+        Assertions.assertEquals(pokemon.getName(), "Charmander");
+        Assertions.assertEquals(pokemon.getType(), updatedPokemon.getType());
+    }
+
+    @Test
+    public void PokemonRepository_DeletePokemon() {
+        // Arrange
+        Pokemon pokemon = Pokemon.builder()
+                .name("Pikachu")
+                .type("Electric")
+                .build();
+
+        pokemonRepository.save(pokemon);
+
+        // Act
+        pokemonRepository.delete(pokemon);
+
+        // Assert
+        Assertions.assertEquals(0, pokemonRepository.findAll().size());
+    }
 }
