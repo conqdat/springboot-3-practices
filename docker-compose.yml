@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  postgres:
+    container_name: "example-postgres-springboot"
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: example
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
