@@ -64,4 +64,65 @@ public class ReviewRepositoryTest {
         // Assert
         Assertions.assertEquals(2, list.size());
     }
+
+    @Test
+    public void ReviewRepository_FindById_ReturnReview() {
+        // Arrange
+        Review review = Review.builder()
+                .title("Pikachu")
+                .content("Electric")
+                .stars(5)
+                .build();
+
+        reviewRepository.save(review);
+
+        // Act
+        Review foundReview = reviewRepository.findById(review.getId()).orElse(null);
+
+        // Assert
+        Assertions.assertNotNull(foundReview);
+        Assertions.assertEquals(review.getTitle(), foundReview.getTitle());
+        Assertions.assertEquals(review.getContent(), foundReview.getContent());
+        Assertions.assertEquals(review.getStars(), foundReview.getStars());
+    }
+
+    @Test
+    public void ReviewRepository_UpdateReview_ReturnReview() {
+        // Arrange
+        Review review = Review.builder()
+                .title("Pikachu")
+                .content("Electric")
+                .stars(5)
+                .build();
+
+        reviewRepository.save(review);
+
+        // Act
+        review.setTitle("Charmander");
+        review.setContent("Fire");
+        review.setStars(4);
+
+        // Assert
+        Assertions.assertEquals("Charmander", review.getTitle());
+        Assertions.assertEquals("Fire", review.getContent());
+        Assertions.assertEquals(4, review.getStars());
+    }
+
+    @Test
+    public void ReviewRepository_DeleteReview() {
+        // Arrange
+        Review review = Review.builder()
+                .title("Pikachu")
+                .content("Electric")
+                .stars(5)
+                .build();
+
+        reviewRepository.save(review);
+
+        // Act
+        reviewRepository.delete(review);
+
+        // Assert
+        Assertions.assertEquals(0, reviewRepository.findAll().size());
+    }
 }
