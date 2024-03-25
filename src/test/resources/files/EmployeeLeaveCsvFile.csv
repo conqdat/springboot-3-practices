@@ -1,0 +1,4 @@
+LDAP,Oracle ID,Employee Name,Level,Legal Entity Hire Date,Email,BU,Location,Leave Date,Report Manager,Hinext Manager,BUCode,Reason
+125351,125351,To Minh Tri,C1,4/12/2021,huy.mai@hitachivantara.com,DS IOT Embedded Systems,(HV) VN Ho Chi Minh City - QTSC Bldg,5/24/2023,Nguyen Quang Huy,Vo Nguyen Anh Tho,IoT,hello
+125282,125282,Dat Cong Tran,C1,4/12/2021,huy.mai@hitachivantara.com,DS IOT Embedded Systems,(HV) VN Ho Chi Minh City - QTSC Bldg,5/24/2023,Nguyen Quang Huy,Vo Nguyen Anh Tho,IoT,hello
+125283,125283,Nguyen Phuoc,C1,4/12/2021,huy.mai@hitachivantara.com,DS IOT Embedded Systems,(HV) VN Ho Chi Minh City - QTSC Bldg,5/24/2023,Nguyen Quang Huy,Vo Nguyen Anh Tho,IoT,hello

@@ -1,0 +1,122 @@
+{
+  "mappingRule": {
+    "ldap": "LDAP",
+    "oracleId": "Oracle ID",
+    "employeeName": "Employee Name",
+    "level": "Level",
+    "legalEntityHireDate": "Legal Entity Hire Date",
+    "email": "Email",
+    "businessUnit": "BU",
+    "location": "Location",
+    "leaveDate": "Leave Date",
+    "reportManager": "Report Manager",
+    "hinextManager": "Hinext Manager",
+    "buCode": "BUCode",
+    "reason": "Reason"
+  },
+  "style": {
+    "sheetName": "Leave",
+    "body": {
+      "font": "Calibri",
+      "backGroundColor": [95,155,213],
+      "isBold": true,
+      "isItalic": false,
+      "fontWeight": 11,
+      "fontColor": 9
+    },
+    "header": {
+      "font": "Calibri",
+      "backGroundColor": [95,155,213],
+      "isBold": false,
+      "isItalic": false,
+      "fontWeight": 11,
+      "fontColor": 1
+    }
+  },
+  "fileName": "Leave Employee Import",
+  "headers": [
+    "LDAP",
+    "Oracle ID",
+    "Employee Name",
+    "Level",
+    "Legal Entity Hire Date",
+    "Email",
+    "BU",
+    "Location",
+    "Leave Date",
+    "Report Manager",
+    "Hinext Manager",
+    "BUCode",
+    "Reason"
+  ],
+  "configKey": [
+    {
+      "key": "LDAP",
+      "type": "String",
+      "isRequired": true
+    },
+    {
+      "key": "Oracle ID",
+      "type": "String",
+      "isRequired": true
+    },
+    {
+      "key": "Employee Name",
+      "type": "String",
+      "isRequired": true
+    },
+    {
+      "key": "Level",
+      "type": "String",
+      "isRequired": true
+    },
+    {
+      "key": "Legal Entity Hire Date",
+      "type": "Date",
+      "isRequired": true
+    },
+    {
+      "key": "Email",
+      "type": "String",
+      "isRequired": true,
+      "validation": "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$"
+    },
+    {
+      "key": "BU",
+      "type": "String",
+      "isRequired": true
+    },
+    {
+      "key": "Location",
+      "type": "String",
+      "isRequired": true
+    },
+    {
+      "key": "Leave Date",
+      "type": "Date",
+      "isRequired": true
+    },
+    {
+      "key": "Report Manager",
+      "type": "String",
+      "isRequired": true
+    },
+    {
+      "key": "Hinext Manager",
+      "type": "String",
+      "isRequired": true
+    },
+    {
+      "key": "BUCode",
+      "type": "String",
+      "isRequired": true
+    },
+    {
+      "key": "Reason",
+      "type": "String",
+      "isRequired": false
+    }
+  ],
+  "startRow": 0,
+  "startColumn": 0
+}

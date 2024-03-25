@@ -1,0 +1,185 @@
+{
+  "mappingRule": {
+    "jinzaiId": "JinzaiID",
+    "staffId": "StaffID",
+    "employeeName": "EmployeeName",
+    "grade": "Grade",
+    "benchDays": "BenchDays",
+    "location": "Location",
+    "primarySkills": "PrimarySkills",
+    "dateOfJoin": "DateOfJoin",
+    "categoryCode": "Category Code",
+    "category": "Category",
+    "justification": "Justification",
+    "plannedBillableDate": "Planned Billable Date?",
+    "accountsBlocked": "Accounts Blocked",
+    "trainingUpskillsinProject": "Training/ Upskills in Project",
+    "statusChangeDate": "Status Change Date",
+    "cop": "CoP.",
+    "coEPractice": "CoE/Practice",
+    "practice": "Practice",
+    "benchDaysBucket": "Bench Days Bucket",
+    "excludeInclude": ". Exclude / Include",
+    "role": "Role"
+  },
+  "style": {
+    "sheetName": "Details",
+    "body": {
+      "font": "Calibri",
+      "backGroundColor": [
+        255,
+        255,
+        255
+      ],
+      "isBold": false,
+      "isItalic": false,
+      "fontWeight": 10,
+      "fontColor": 9
+    },
+    "header": {
+      "font": "Calibri",
+      "backGroundColor": [
+        192,
+        0,
+        0
+      ],
+      "isBold": true,
+      "isItalic": false,
+      "fontWeight": 9,
+      "fontColor": 1
+    }
+  },
+  "fileName": "VDC Bench - 11Oct23",
+  "headers": [
+    "JinzaiID",
+    "StaffID",
+    "EmployeeName",
+    "Grade",
+    "BenchDays",
+    "Location",
+    "PrimarySkills",
+    "DateOfJoin",
+    "Category Code",
+    "Category",
+    "Justification",
+    "Planned Billable Date?",
+    "Accounts Blocked",
+    "Training/ Upskills in Project",
+    "Status Change Date",
+    "CoP.",
+    "CoE/Practice",
+    "Practice",
+    "Bench Days Bucket",
+    ". Exclude / Include",
+    "Role"
+  ],
+  "configKey": [
+    {
+      "key": "JinzaiID",
+      "type": "String",
+      "isRequired": true
+    },
+    {
+      "key": "StaffID",
+      "type": "String",
+      "isRequired": true
+    },
+    {
+      "key": "EmployeeName",
+      "type": "String",
+      "isRequired": true
+    },
+    {
+      "key": "Grade",
+      "type": "String",
+      "isRequired": false
+    },
+    {
+      "key": "BenchDays",
+      "type": "String",
+      "isRequired": false
+    },
+    {
+      "key": "Location",
+      "type": "String",
+      "isRequired": false
+    },
+    {
+      "key": "PrimarySkills",
+      "type": "String",
+      "isRequired": false
+    },
+    {
+      "key": "DateOfJoin",
+      "type": "Date",
+      "isRequired": false
+    },
+    {
+      "key": "Category Code",
+      "type": "Integer",
+      "isRequired": false
+    },
+    {
+      "key": "Category",
+      "type": "String",
+      "isRequired": false
+    },
+    {
+      "key": "Justification",
+      "type": "String",
+      "isRequired": false
+    },
+    {
+      "key": "Planned Billable Date?",
+      "type": "String",
+      "isRequired": false
+    },
+    {
+      "key": "Accounts Blocked",
+      "type": "String",
+      "isRequired": false
+    },
+    {
+      "key": "Training/ Upskills in Project",
+      "type": "String",
+      "isRequired": false
+    },
+    {
+      "key": "Status Change Date",
+      "type": "Date",
+      "isRequired": false
+    },
+    {
+      "key": "CoP.",
+      "type": "String",
+      "isRequired": false
+    },
+    {
+      "key": "CoE/Practice",
+      "type": "String",
+      "isRequired": false
+    },
+    {
+      "key": "Practice",
+      "type": "String",
+      "isRequired": false
+    },
+    {
+      "key": "Bench Days Bucket",
+      "type": "String",
+      "isRequired": false
+    },
+    {
+      "key": ". Exclude / Include",
+      "type": "String",
+      "isRequired": false
+    },
+    {
+      "key": "Role",
+      "type": "String",
+      "isRequired": false
+    }
+  ],
+  "startRow": 0,
+  "startColumn": 0
+}
