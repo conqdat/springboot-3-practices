@@ -1,10 +1,10 @@
-package com.pokemonreview.api;
+package com.base.projectbase;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ApiApplicationTests {
+class ProjectBaseApplicationTests {
 
 	@Test
 	void contextLoads() {

@@ -1,13 +1,13 @@
-package com.pokemonreview.api;
+package com.base.projectbase;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ApiApplication {
+public class ProjectBaseApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ApiApplication.class, args);
+		SpringApplication.run(ProjectBaseApplication.class, args);
 	}
 
 }
