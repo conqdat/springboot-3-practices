@@ -1,13 +1,11 @@
 package com.base.projectbase.service.impl;
 
+import com.base.projectbase.entity.Product;
 import com.base.projectbase.exception.ResourceNotFoundException;
 import com.base.projectbase.model.dto.ProductDTO;
-import com.base.projectbase.entity.Product;
 import com.base.projectbase.repository.ProductRepository;
 import com.base.projectbase.service.ProductService;
 import com.base.projectbase.transformation.ProductTransformer;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,7 +18,6 @@ public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
     private final ProductTransformer productTransformer;
 
-    @Autowired
     public ProductServiceImpl(ProductRepository productRepository, ProductTransformer productTransformer) {
         this.productRepository = productRepository;
         this.productTransformer = productTransformer;
