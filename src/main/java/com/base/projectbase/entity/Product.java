@@ -10,7 +10,7 @@ import lombok.*;
 @Entity
 @Builder
 @Table(name = "products")
-public class Product {
+public class Product extends BaseEntity {
 
     @jakarta.persistence.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
