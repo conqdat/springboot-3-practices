@@ -1,6 +1,6 @@
 package com.base.projectbase.service.impl;
 
-import com.base.projectbase.dto.ProductDTO;
+import com.base.projectbase.model.dto.ProductDTO;
 import com.base.projectbase.entity.Product;
 import com.base.projectbase.repository.ProductRepository;
 import com.base.projectbase.service.ProductService;

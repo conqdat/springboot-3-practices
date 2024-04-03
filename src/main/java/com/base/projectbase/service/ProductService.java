@@ -1,7 +1,6 @@
 package com.base.projectbase.service;
 
-import com.base.projectbase.dto.ProductDTO;
-import com.base.projectbase.entity.Product;
+import com.base.projectbase.model.dto.ProductDTO;
 
 import java.util.List;
 

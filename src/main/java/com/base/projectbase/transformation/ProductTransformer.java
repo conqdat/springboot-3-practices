@@ -1,6 +1,6 @@
 package com.base.projectbase.transformation;
 
-import com.base.projectbase.dto.ProductDTO;
+import com.base.projectbase.model.dto.ProductDTO;
 import com.base.projectbase.entity.Product;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

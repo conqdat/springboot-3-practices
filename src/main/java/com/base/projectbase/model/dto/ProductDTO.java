@@ -1,4 +1,4 @@
-package com.base.projectbase.dto;
+package com.base.projectbase.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.GeneratedValue;
