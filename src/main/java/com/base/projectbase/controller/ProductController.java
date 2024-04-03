@@ -3,11 +3,11 @@ package com.base.projectbase.controller;
 import com.base.projectbase.model.dto.ProductDTO;
 import com.base.projectbase.model.response.ProductResponse;
 import com.base.projectbase.service.ProductService;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +22,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/products")
 @Slf4j
+@Tag(name = "Product", description = "Product Resource APIs")
 public class ProductController {
 
     private final ProductService productService;
