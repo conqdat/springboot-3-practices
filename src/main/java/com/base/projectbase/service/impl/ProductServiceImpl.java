@@ -8,6 +8,7 @@ import com.base.projectbase.service.ProductService;
 import com.base.projectbase.transformation.ProductTransformer;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,6 +28,7 @@ public class ProductServiceImpl implements ProductService {
     public List<ProductDTO> getAllProducts() {
         List<Product> products = productRepository.findAll();
         return products.stream()
+                .sorted(Comparator.comparing(Product::getId))
                 .map(productTransformer::convertToDTO)
                 .collect(Collectors.toList());
     }

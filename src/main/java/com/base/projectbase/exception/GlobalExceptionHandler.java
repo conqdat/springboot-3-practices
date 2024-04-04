@@ -6,8 +6,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -29,4 +32,13 @@ public class GlobalExceptionHandler {
         ErrorResponse errorResponse = new ErrorResponse("Validation Failed", new ArrayList<>(details));
         return ResponseEntity.badRequest().body(errorResponse);
     }
+
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity<ErrorResponse> handleTypeMismatchExceptions(MethodArgumentTypeMismatchException ex) {
+        String errorMessage = "Invalid value for parameter '" + ex.getName() +
+                "': '" + ex.getValue() + "' is not a valid " + Objects.requireNonNull(ex.getRequiredType()).getSimpleName();
+        ErrorResponse errorResponse = new ErrorResponse("Invalid Parameter Value", Collections.singletonList(errorMessage));
+        return ResponseEntity.badRequest().body(errorResponse);
+    }
+
 }

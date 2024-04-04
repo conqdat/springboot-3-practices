@@ -4,9 +4,9 @@ import com.base.projectbase.model.dto.ProductDTO;
 import com.base.projectbase.model.response.ProductResponse;
 import com.base.projectbase.service.ProductService;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +23,7 @@ import java.util.List;
 @RequestMapping("/api/v1/products")
 @Slf4j
 @Tag(name = "Product", description = "Product Resource APIs")
+@Validated
 public class ProductController {
 
     private final ProductService productService;
@@ -47,15 +48,14 @@ public class ProductController {
 
     @PutMapping("/{id}")
     public ProductResponse<ProductDTO> updateProduct(@PathVariable Long id, @RequestBody ProductDTO productDTO) {
-        ProductDTO currentProduct = productService.getProduct(id);
-        ProductDTO updatedProduct = productService.updateProduct(currentProduct, id);
+        ProductDTO updatedProduct = productService.updateProduct(productDTO, id);
         log.info("Updated a product with name: " + updatedProduct.getProductName());
         return new ProductResponse<>(HttpStatus.OK, "Product updated", updatedProduct);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ProductResponse<ProductDTO> createProduct(@Valid @RequestBody ProductDTO productDTO) {
+    public ProductResponse<ProductDTO> createProduct(@RequestBody ProductDTO productDTO) {
         ProductDTO createdProduct = productService.createProduct(productDTO);
         log.info("Created a product with name: " + createdProduct.getProductName());
         return new ProductResponse<>(HttpStatus.CREATED, "Product Created", createdProduct);
