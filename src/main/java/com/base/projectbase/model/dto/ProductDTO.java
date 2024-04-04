@@ -25,11 +25,11 @@ public class ProductDTO {
     private Long Id;
 
     @JsonProperty("product_name")
-    @NotEmpty(message = "must be a required")
+    @NotEmpty(message = "product_name must be a required")
     private String productName;
 
     @JsonProperty("product_price")
-    @NotNull(message = "must be a required")
-    @Positive(message = "must be greater than zero")
+    @NotNull(message = "product_price must be a required")
+    @Positive(message = "product_price must be greater than zero")
     private Double productPrice;
 }
