@@ -1,11 +1,16 @@
 package com.base.projectbase.controller;
 
 import com.base.projectbase.model.Category;
+import com.base.projectbase.model.Product;
 import com.base.projectbase.repository.CategoryRepo;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -14,11 +19,16 @@ public class CategoryController {
     @Autowired
     private CategoryRepo categoryRepo;
 
-    @GetMapping
-    public List<Category> findAll(){
-        return categoryRepo.findAll();
+    @GetMapping("")
+    public ResponseEntity<?> getProducts(
+            @RequestParam(value = "page", defaultValue = "0")     int page,
+            @RequestParam(value = "limit", defaultValue = "1")    int limit
+    ) {
+        PageRequest pageRequest = PageRequest.of(page, limit);
+        Page<Category> productPage = categoryRepo.findAll(pageRequest);
+        List<Category> categories = productPage.getContent();
+        return ResponseEntity.ok(categories);
     }
-
     @PostMapping
     public Category create(@RequestBody Category category){
         return categoryRepo.save(category);
