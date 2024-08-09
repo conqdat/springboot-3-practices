@@ -4,6 +4,7 @@ import com.base.projectbase.model.dto.ProductDTO;
 import com.base.projectbase.model.response.ProductResponse;
 import com.base.projectbase.service.ProductService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
@@ -35,36 +36,37 @@ public class ProductController {
     @GetMapping
     public ProductResponse<List<ProductDTO>> getAllProducts() {
         List<ProductDTO> productDTOs = productService.getAllProducts();
-        log.info("Get list of Products with size: " + productDTOs.size());
+        log.info("Get list of Products with size: {}", productDTOs.size());
         return new ProductResponse<>(HttpStatus.OK, "List of products", productDTOs);
     }
 
     @GetMapping("/{id}")
     public ProductResponse<ProductDTO> getProduct(@PathVariable Long id) {
         ProductDTO productDTO = productService.getProduct(id);
-        log.info("Get a product with name: " + productDTO.getProductName());
+        log.info("Get a product with name: {}", productDTO.getProductName());
         return new ProductResponse<>(HttpStatus.OK, "Product found", productDTO);
     }
 
     @PutMapping("/{id}")
-    public ProductResponse<ProductDTO> updateProduct(@PathVariable Long id, @RequestBody ProductDTO productDTO) {
+    public ProductResponse<ProductDTO> updateProduct(@PathVariable Long id, @RequestBody @Valid ProductDTO productDTO) {
         ProductDTO updatedProduct = productService.updateProduct(productDTO, id);
-        log.info("Updated a product with name: " + updatedProduct.getProductName());
+        System.out.println("Something");
+        log.info("Updated a product with name: {}", updatedProduct.getProductName());
         return new ProductResponse<>(HttpStatus.OK, "Product updated", updatedProduct);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ProductResponse<ProductDTO> createProduct(@RequestBody ProductDTO productDTO) {
+    public ProductResponse<ProductDTO> createProduct(@RequestBody @Valid ProductDTO productDTO) {
         ProductDTO createdProduct = productService.createProduct(productDTO);
-        log.info("Created a product with name: " + createdProduct.getProductName());
+        log.info("Created a product with name: {}", createdProduct.getProductName());
         return new ProductResponse<>(HttpStatus.CREATED, "Product Created", createdProduct);
     }
 
     @DeleteMapping("/{id}")
     public ProductResponse<String> deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
-        log.info("Deleted a product with ID: " + id);
+        log.info("Deleted a product with ID: {}", id);
         return new ProductResponse<>(HttpStatus.OK, "Product deleted", "Deleted Product with ID " + id);
     }
 }
