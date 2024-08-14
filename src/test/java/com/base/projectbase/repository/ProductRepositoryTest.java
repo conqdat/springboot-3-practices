@@ -1,15 +1,20 @@
 package com.base.projectbase.repository;
 
 import com.base.projectbase.entity.Product;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import java.time.Duration;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTimeout;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
@@ -17,6 +22,31 @@ class ProductRepositoryTest {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Disabled("Disabled until bug #99 has been fixed")
+    @Test
+    void test_ex() {
+        Exception exception = assertThrows(RuntimeException.class, () -> {
+            int zero = 0;
+            int result = 1 / zero;
+        });
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "1,2,3",
+            "2,2,4",
+    })
+    void testSum(int first, int second, int expected) {
+        assertThat(first + second).isEqualTo(expected);
+    }
+
+    @Test
+    void timeoutExceeded() {
+        assertTimeout(Duration.ofMillis(1000), () -> {
+            Thread.sleep(999); // 70 seconds sleep (1 minute 10 seconds)
+        });
+    }
 
     @Test
     public void testSaveProduct() {
