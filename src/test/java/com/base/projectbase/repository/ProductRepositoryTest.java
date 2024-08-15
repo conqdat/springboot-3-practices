@@ -23,6 +23,7 @@ class ProductRepositoryTest {
     @Autowired
     private ProductRepository productRepository;
 
+
     @Disabled("Disabled until bug #99 has been fixed")
     @Test
     void test_ex() {

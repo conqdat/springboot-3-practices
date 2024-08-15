@@ -24,4 +24,5 @@ public class Product extends BaseEntity {
 
     @Column(name = "product_code")
     private String productCode;
+
 }

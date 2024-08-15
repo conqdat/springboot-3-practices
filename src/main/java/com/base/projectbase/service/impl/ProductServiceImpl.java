@@ -5,7 +5,6 @@ import com.base.projectbase.exception.ResourceNotFoundException;
 import com.base.projectbase.model.dto.ProductDTO;
 import com.base.projectbase.repository.ProductRepository;
 import com.base.projectbase.service.ProductService;
-import com.base.projectbase.transformation.ProductTransformer;
 import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
@@ -17,11 +16,9 @@ public class ProductServiceImpl implements ProductService {
 
 
     private final ProductRepository productRepository;
-    private final ProductTransformer productTransformer;
 
-    public ProductServiceImpl(ProductRepository productRepository, ProductTransformer productTransformer) {
+    public ProductServiceImpl(ProductRepository productRepository) {
         this.productRepository = productRepository;
-        this.productTransformer = productTransformer;
     }
 
     @Override
@@ -29,15 +26,15 @@ public class ProductServiceImpl implements ProductService {
         List<Product> products = productRepository.findAll();
         return products.stream()
                 .sorted(Comparator.comparing(Product::getId))
-                .map(productTransformer::convertToDTO)
+                .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }
 
     @Override
     public ProductDTO createProduct(ProductDTO productDTO) {
-        Product product = productTransformer.convertToEntity(productDTO);
+        Product product = this.convertToEntity(productDTO);
         Product savedProduct = productRepository.save(product);
-        return productTransformer.convertToDTO(savedProduct);
+        return this.convertToDTO(savedProduct);
     }
 
     @Override
@@ -49,7 +46,7 @@ public class ProductServiceImpl implements ProductService {
         updatedProduct.setProductPrice(productDTO.getProductPrice());
         updatedProduct = productRepository.save(updatedProduct);
 
-        return productTransformer.convertToDTO(updatedProduct);
+        return this.convertToDTO(updatedProduct);
     }
 
 
@@ -57,11 +54,27 @@ public class ProductServiceImpl implements ProductService {
     public ProductDTO getProduct(Long id) {
         Product currentProduct = productRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Product not found with id: " + id));
-        return productTransformer.convertToDTO(currentProduct);
+        return this.convertToDTO(currentProduct);
     }
 
     @Override
     public void deleteProduct(Long id) {
         productRepository.findById(id).ifPresent(deletedProduct -> productRepository.deleteById(id));
+    }
+
+    public ProductDTO convertToDTO(Product product) {
+        return ProductDTO.builder()
+                .Id(product.getId())
+                .productPrice(product.getProductPrice())
+                .productName(product.getProductName())
+                .build();
+    }
+
+    public Product convertToEntity(ProductDTO productDTO) {
+        return Product.builder()
+                .Id(productDTO.getId())
+                .productName(productDTO.getProductName())
+                .productPrice(productDTO.getProductPrice())
+                .build();
     }
 }

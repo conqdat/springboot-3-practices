@@ -1,5 +1,6 @@
 package com.base.projectbase.model.dto;
 
+import com.base.projectbase.entity.Product;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,7 +19,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 public class ProductDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +27,9 @@ public class ProductDTO {
     @JsonProperty("product_name")
     @NotEmpty(message = "product_name must be a required")
     private String productName;
+
+    @JsonProperty("product_code")
+    private String productCode;
 
     @JsonProperty("product_price")
     @NotNull(message = "product_price must be a required")
