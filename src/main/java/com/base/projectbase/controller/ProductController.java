@@ -5,6 +5,7 @@ import com.base.projectbase.model.response.ProductResponse;
 import com.base.projectbase.service.ProductService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
@@ -48,7 +49,7 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-    public ProductResponse<ProductDTO> updateProduct(@PathVariable Long id, @RequestBody @Valid ProductDTO productDTO) {
+    public ProductResponse<ProductDTO> updateProduct(@PathVariable @NonNull Long id, @RequestBody @Valid ProductDTO productDTO) {
         ProductDTO updatedProduct = productService.updateProduct(productDTO, id);
         System.out.println("Something");
         log.info("Updated a product with name: {}", updatedProduct.getProductName());
