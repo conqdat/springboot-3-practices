@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springboot_3_practices.repository.UserRepository">
+
+    <!-- Map database columns to Java object fields -->
+    <resultMap id="userResultMap" type="com.example.springboot_3_practices.entity.User">
+        <id property="id" column="id" />
+        <result property="name" column="name" />
+        <result property="age" column="age" />
+        <result property="email" column="email" />
+    </resultMap>
+
+    <!-- Query to fetch all users -->
+    <select id="findAll" resultMap="userResultMap">
+        SELECT * FROM users
+    </select>
+
+    <!-- Query to insert a new user -->
+    <insert id="insert" parameterType="com.example.springboot_3_practices.entity.User" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO users(name, email, age)
+        VALUES(#{name}, #{email}, #{age})
+    </insert>
+
+    <!-- Query to update an existing user -->
+    <update id="update" parameterType="com.example.springboot_3_practices.entity.User">
+        UPDATE users
+        SET name = #{name}, age = #{age}, email = #{email}
+        WHERE id = #{id}
+    </update>
+
+    <!-- Query to delete a user by ID -->
+    <delete id="deleteById" parameterType="int">
+        DELETE FROM users WHERE id = #{id}
+    </delete>
+
+    <!-- Query to fetch a user by ID -->
+    <select id="findById" parameterType="int" resultMap="userResultMap">
+        SELECT id, name, age, email FROM users WHERE id = #{id}
+    </select>
+</mapper>
